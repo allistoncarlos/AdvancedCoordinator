@@ -16,7 +16,17 @@ class StudentViewController: UIViewController, UIViewControllerConfigurable, Coo
   var studentLabel: UILabel = {
     let studentLabel = UILabel()
     studentLabel.translatesAutoresizingMaskIntoConstraints = false
+    studentLabel.textAlignment = .center
+    studentLabel.font = UIFont.boldSystemFont(ofSize: 28)
     return studentLabel
+  }()
+  
+  var teacherButton: UIButton = {
+    let teacherButton = UIButton(configuration: .filled(), primaryAction: nil)
+    teacherButton.setTitle("Show Tony Stark teacher", for: .normal)
+    teacherButton.translatesAutoresizingMaskIntoConstraints = false
+    teacherButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    return teacherButton
   }()
   
   // MARK: - Override Funcs
@@ -35,6 +45,7 @@ class StudentViewController: UIViewController, UIViewControllerConfigurable, Coo
     self.title = student
     
     view.addSubview(self.studentLabel)
+    view.addSubview(self.teacherButton)
   }
   
   func configureConstraints() {
@@ -45,6 +56,21 @@ class StudentViewController: UIViewController, UIViewControllerConfigurable, Coo
       studentLabel.heightAnchor.constraint(equalToConstant: 50.0)
     ]
     NSLayoutConstraint.activate(studentLabelConstraints)
+    
+    let teacherButtonConstraints = [
+      teacherButton.topAnchor.constraint(equalTo: studentLabel.bottomAnchor, constant: 20),
+      teacherButton.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20),
+      teacherButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20),
+      teacherButton.heightAnchor.constraint(equalToConstant: 50.0)
+    ]
+    NSLayoutConstraint.activate(teacherButtonConstraints)
+  }
+  
+  // MARK: - Actions
+  @objc func buttonTapped() {
+    if let studentCoordinator = self.coordinator as? StudentsCoordinator {
+      studentCoordinator.showSelectedTeacher(teacher: "Tony Stark")
+    }
   }
 }
 

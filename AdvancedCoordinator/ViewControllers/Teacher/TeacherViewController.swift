@@ -16,6 +16,8 @@ class TeacherViewController: UIViewController, UIViewControllerConfigurable, Coo
   var teacherLabel: UILabel = {
     let teacherLabel = UILabel()
     teacherLabel.translatesAutoresizingMaskIntoConstraints = false
+    teacherLabel.textAlignment = .center
+    teacherLabel.font = UIFont.boldSystemFont(ofSize: 28)
     return teacherLabel
   }()
   

@@ -8,10 +8,9 @@
 import UIKit
 
 protocol Coordinator {
-    var childCoordinators: [Coordinator] { get set }
-    var rootViewController: UIViewController { get set }
-
-    func start()
-//    func navigateToSecondScreen()
-//    func navigateToHome()
+  var parentCoordinator: Coordinator? { get set }
+  var childCoordinators: [Coordinator] { get set }
+  var rootViewController: UIViewController { get set }
+  
+  func start()
 }

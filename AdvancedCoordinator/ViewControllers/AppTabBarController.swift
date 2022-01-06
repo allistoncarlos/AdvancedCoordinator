@@ -9,11 +9,21 @@ import UIKit
 
 class AppTabBarController: UITabBarController, UITabBarControllerDelegate {
   // MARK: - Coordinators
-  private let teachersCoordinator: TeachersCoordinator
-  private let studentsCoordinator: StudentsCoordinator
+  var appCoordinator: AppCoordinator? {
+    didSet {
+      self.teachersCoordinator?.parentCoordinator = appCoordinator
+      self.studentsCoordinator?.parentCoordinator = appCoordinator
+      
+      self.appCoordinator?.childCoordinators.append(self.teachersCoordinator!)
+      self.appCoordinator?.childCoordinators.append(self.studentsCoordinator!)
+    }
+  }
   
   private let teachersNavigationController: UINavigationController
   private let studentsNavigationController: UINavigationController
+  
+  private let teachersCoordinator: TeachersCoordinator?
+  private let studentsCoordinator: StudentsCoordinator?
   
   // MARK: - Init
   init() {
@@ -31,8 +41,8 @@ class AppTabBarController: UITabBarController, UITabBarControllerDelegate {
     self.teachersCoordinator = TeachersCoordinator(rootViewController: teachersNavigationController)
     self.studentsCoordinator = StudentsCoordinator(rootViewController: studentsNavigationController)
     
-    self.teachersCoordinator.start()
-    self.studentsCoordinator.start()
+    self.teachersCoordinator?.start()
+    self.studentsCoordinator?.start()
     
     super.init(nibName: nil, bundle: nil)
   }

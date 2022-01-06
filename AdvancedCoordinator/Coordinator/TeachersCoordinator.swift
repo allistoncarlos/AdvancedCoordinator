@@ -8,6 +8,7 @@
 import UIKit
 
 class TeachersCoordinator: Coordinator {
+  var parentCoordinator: Coordinator?
   var childCoordinators = [Coordinator]()
   var rootViewController: UIViewController
   
@@ -25,6 +26,7 @@ class TeachersCoordinator: Coordinator {
     let navigationController = self.rootViewController as! UINavigationController
     
     let teacherViewController = TeacherViewController()
+    teacherViewController.coordinator = self
     teacherViewController.teacher = teacher
     
     navigationController.show(teacherViewController, sender: nil)
