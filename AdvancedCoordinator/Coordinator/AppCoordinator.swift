@@ -20,15 +20,14 @@ class AppCoordinator: Coordinator {
     let tabBarController = rootViewController as! AppTabBarController
     tabBarController.appCoordinator = self
   }
+
+  func showTeachersTab() {
+    let tabBarController = rootViewController as! AppTabBarController
+    tabBarController.selectedIndex = 0
+  }
   
-  //    func navigateToSecondScreen() {
-  ////        let viewController = SecondViewController(coordinator: self)
-  ////        viewController.title = "Second Screen"
-  ////
-  ////        navigationController.pushViewController(viewController, animated: true)
-  //    }
-  //
-  //    func navigateToHome() {
-  ////        navigationController.popToRootViewController(animated: true)
-  //    }
+  func showStudentsTab() {
+    let tabBarController = rootViewController as! AppTabBarController
+    tabBarController.selectedIndex = 1
+  }
 }

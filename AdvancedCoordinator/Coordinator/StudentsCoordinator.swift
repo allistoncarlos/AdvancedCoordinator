@@ -34,10 +34,13 @@ class StudentsCoordinator: Coordinator {
   
   func showSelectedTeacher(teacher: String) {
     let navigationController = self.rootViewController as! UINavigationController
-    //    let tabBarController = navigationController.topViewController as! AppTabBarController
-    
-    if let parentCoordinator = self.parentCoordinator {
-      
+    navigationController.popViewController {
+      if let parentCoordinator = self.parentCoordinator as? AppCoordinator {
+        parentCoordinator.showTeachersTab()
+        
+        let teachersCoordinator = parentCoordinator.childCoordinators.first { $0 is TeachersCoordinator } as? TeachersCoordinator
+        teachersCoordinator?.showTeacher(teacher: "Tony Stark")
+      }
     }
   }
 }
