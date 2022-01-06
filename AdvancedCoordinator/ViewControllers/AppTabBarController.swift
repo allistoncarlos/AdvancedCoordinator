@@ -19,6 +19,7 @@ class AppTabBarController: UITabBarController, UITabBarControllerDelegate {
   init() {
     let teachersViewController = TeachersViewController()
     teachersViewController.title = "Teachers"
+    
     let studentsViewController = StudentsViewController()
     studentsViewController.title = "Students"
     
@@ -27,8 +28,11 @@ class AppTabBarController: UITabBarController, UITabBarControllerDelegate {
     self.studentsNavigationController = UINavigationController(rootViewController: studentsViewController)
     self.studentsNavigationController.navigationBar.prefersLargeTitles = true
     
-    self.studentsCoordinator = StudentsCoordinator(rootViewController: teachersNavigationController)
-    self.teachersCoordinator = TeachersCoordinator(rootViewController: studentsNavigationController)
+    self.teachersCoordinator = TeachersCoordinator(rootViewController: teachersNavigationController)
+    self.studentsCoordinator = StudentsCoordinator(rootViewController: studentsNavigationController)
+    
+    self.teachersCoordinator.start()
+    self.studentsCoordinator.start()
     
     super.init(nibName: nil, bundle: nil)
   }

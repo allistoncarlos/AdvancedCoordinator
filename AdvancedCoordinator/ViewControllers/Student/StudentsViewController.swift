@@ -48,7 +48,11 @@ class StudentsViewController: UITableViewController, UIViewControllerConfigurabl
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let student = students[indexPath.row]
     
+    if let coordinator = self.coordinator as? StudentsCoordinator {
+      coordinator.showStudent(student: student)
+    }
   }
 }
 

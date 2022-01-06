@@ -17,19 +17,16 @@ class TeachersCoordinator: Coordinator {
   
   func start() {
     let navigationViewController = rootViewController as! UINavigationController
-//    let platformsViewController = navigationViewController.children.first as! PlatformsViewController
-//    platformsViewController.coordinator = self
+    let teachersViewController = navigationViewController.children.first as! TeachersViewController
+    teachersViewController.coordinator = self
   }
   
-  func showTeacher(id: String? = nil) {
+  func showTeacher(teacher: String? = nil) {
     let navigationController = self.rootViewController as! UINavigationController
-//    let platformsViewController = navigationController.children.first as! PlatformsViewController
-//    let editPlatformViewController = EditPlatformViewController.instantiate()
-//    editPlatformViewController.modalPresentationStyle = .automatic
-//    editPlatformViewController.modalTransitionStyle = .crossDissolve
-//    editPlatformViewController.delegate = platformsViewController
-//    editPlatformViewController.platformId = id
-//    
-//    platformsViewController.present(UINavigationController(rootViewController: editPlatformViewController), animated: true, completion: nil)
+    
+    let teacherViewController = TeacherViewController()
+    teacherViewController.teacher = teacher
+    
+    navigationController.show(teacherViewController, sender: nil)
   }
 }

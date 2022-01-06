@@ -12,11 +12,11 @@ class TeachersViewController: UITableViewController, UIViewControllerConfigurabl
   var coordinator: Coordinator?
   
   let teachers: [String] = [
-      "Tony Stark",
-      "Carol Danvers",
-      "Steve Rogers",
-      "Clint Barton",
-      "Natasha Romanoff"
+    "Tony Stark",
+    "Carol Danvers",
+    "Steve Rogers",
+    "Clint Barton",
+    "Natasha Romanoff"
   ]
   
   // MARK: - Override Funcs
@@ -38,13 +38,22 @@ class TeachersViewController: UITableViewController, UIViewControllerConfigurabl
   
   // MARK: - TableView funcs
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return teachers.count
+    return teachers.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = UITableViewCell(style: .default, reuseIdentifier: "teachersListViewCell")
-      cell.textLabel?.text = teachers[indexPath.row]
-      return cell
+    let cell = UITableViewCell(style: .default, reuseIdentifier: "teachersListViewCell")
+    cell.textLabel?.text = teachers[indexPath.row]
+    return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let teacher = teachers[indexPath.row]
+    
+    if let coordinator = self.coordinator as? TeachersCoordinator {
+      coordinator.showTeacher(teacher: teacher)
+      self.tableView.deselectRow(at: indexPath, animated: true)
+    }
   }
 }
 

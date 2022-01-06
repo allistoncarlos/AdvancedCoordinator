@@ -20,6 +20,8 @@
 		A5C3CF1E27875105009D707C /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3CF1D27875105009D707C /* StudentsViewController.swift */; };
 		A5C3CF2027875244009D707C /* TeachersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3CF1F27875244009D707C /* TeachersCoordinator.swift */; };
 		A5C3CF22278752DE009D707C /* StudentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3CF21278752DE009D707C /* StudentsCoordinator.swift */; };
+		A5C3CF242787628B009D707C /* TeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3CF232787628B009D707C /* TeacherViewController.swift */; };
+		A5C3CF2827876A1E009D707C /* StudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C3CF2727876A1E009D707C /* StudentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		A5C3CF1D27875105009D707C /* StudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewController.swift; sourceTree = "<group>"; };
 		A5C3CF1F27875244009D707C /* TeachersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachersCoordinator.swift; sourceTree = "<group>"; };
 		A5C3CF21278752DE009D707C /* StudentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsCoordinator.swift; sourceTree = "<group>"; };
+		A5C3CF232787628B009D707C /* TeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherViewController.swift; sourceTree = "<group>"; };
+		A5C3CF2727876A1E009D707C /* StudentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,9 +101,9 @@
 		A5C3CF1527874F92009D707C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5C3CF26278765B4009D707C /* Student */,
+				A5C3CF25278765AF009D707C /* Teacher */,
 				A5C3CF1B27875099009D707C /* AppTabBarController.swift */,
-				A5C3CF1627874FA2009D707C /* TeachersViewController.swift */,
-				A5C3CF1D27875105009D707C /* StudentsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -110,6 +114,24 @@
 				A5C3CF1927874FC9009D707C /* UIViewControllerConfigurable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		A5C3CF25278765AF009D707C /* Teacher */ = {
+			isa = PBXGroup;
+			children = (
+				A5C3CF1627874FA2009D707C /* TeachersViewController.swift */,
+				A5C3CF232787628B009D707C /* TeacherViewController.swift */,
+			);
+			path = Teacher;
+			sourceTree = "<group>";
+		};
+		A5C3CF26278765B4009D707C /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				A5C3CF1D27875105009D707C /* StudentsViewController.swift */,
+				A5C3CF2727876A1E009D707C /* StudentViewController.swift */,
+			);
+			path = Student;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,12 +209,14 @@
 				A5C3CF2027875244009D707C /* TeachersCoordinator.swift in Sources */,
 				A5C3CEFB27874CD0009D707C /* AppDelegate.swift in Sources */,
 				A5C3CF1727874FA2009D707C /* TeachersViewController.swift in Sources */,
+				A5C3CF242787628B009D707C /* TeacherViewController.swift in Sources */,
 				A5C3CF22278752DE009D707C /* StudentsCoordinator.swift in Sources */,
 				A5C3CEFD27874CD0009D707C /* SceneDelegate.swift in Sources */,
 				A5C3CF1C27875099009D707C /* AppTabBarController.swift in Sources */,
 				A5C3CF1427874D97009D707C /* Coordinatable.swift in Sources */,
 				A5C3CF1E27875105009D707C /* StudentsViewController.swift in Sources */,
 				A5C3CF1A27874FC9009D707C /* UIViewControllerConfigurable.swift in Sources */,
+				A5C3CF2827876A1E009D707C /* StudentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
