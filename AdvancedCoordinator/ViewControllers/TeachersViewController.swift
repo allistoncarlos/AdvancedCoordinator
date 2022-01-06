@@ -7,18 +7,17 @@
 
 import UIKit
 
-class TeachersViewController: UIViewController, UIViewControllerConfigurable, Coordinatable {
+class TeachersViewController: UITableViewController, UIViewControllerConfigurable, Coordinatable {
   // MARK: - Properties
   var coordinator: Coordinator?
   
-  // MARK: - Views
-  var button: UIButton = {
-    let button = UIButton(configuration: .filled(), primaryAction: nil)
-    button.setTitle("Next", for: .normal)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    return button
-  }()
+  let teachers: [String] = [
+      "Tony Stark",
+      "Carol Danvers",
+      "Steve Rogers",
+      "Clint Barton",
+      "Natasha Romanoff"
+  ]
   
   // MARK: - Override Funcs
   override func viewDidLoad() {
@@ -31,23 +30,21 @@ class TeachersViewController: UIViewController, UIViewControllerConfigurable, Co
   // MARK: - Protocol Funcs
   func configureView() {
     view.backgroundColor = .systemBackground
-    
-    view.addSubview(button)
   }
   
   func configureConstraints() {
-    let buttonConstraints = [
-      button.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
-      button.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-      button.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-      button.heightAnchor.constraint(equalToConstant: 50.0)
-    ]
-    NSLayoutConstraint.activate(buttonConstraints)
+    
   }
   
-  // MARK: - Actions
-  @objc func buttonTapped() {
-    //        self.coordinator?.navigateToSecondScreen()
+  // MARK: - TableView funcs
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      return teachers.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      let cell = UITableViewCell(style: .default, reuseIdentifier: "teachersListViewCell")
+      cell.textLabel?.text = teachers[indexPath.row]
+      return cell
   }
 }
 

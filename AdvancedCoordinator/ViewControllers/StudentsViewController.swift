@@ -7,47 +7,48 @@
 
 import UIKit
 
-class StudentsViewController: UIViewController, UIViewControllerConfigurable, Coordinatable {
-    // MARK: - Properties
-    var coordinator: Coordinator?
-    
-    // MARK: - Views
-    var button: UIButton = {
-        let button = UIButton(configuration: .filled(), primaryAction: nil)
-        button.setTitle("Next", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        return button
-    }()
+class StudentsViewController: UITableViewController, UIViewControllerConfigurable, Coordinatable {
+  // MARK: - Properties
+  var coordinator: Coordinator?
   
-    // MARK: - Override Funcs
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        configureView()
-        configureConstraints()
-    }
-
-    // MARK: - Protocol Funcs
-    func configureView() {
-        view.backgroundColor = .systemBackground
-        
-        view.addSubview(button)
-    }
+  let students: [String] = [
+    "Peter Parker",
+    "Kamala Khan",
+    "Sam Wilson",
+    "Kate Bishop",
+    "Yelena Belova"
+  ]
+  
+  // MARK: - Override Funcs
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    func configureConstraints() {
-        let buttonConstraints = [
-            button.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor),
-            button.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            button.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            button.heightAnchor.constraint(equalToConstant: 50.0)
-        ]
-        NSLayoutConstraint.activate(buttonConstraints)
-    }
+    configureView()
+    configureConstraints()
+  }
+  
+  // MARK: - Protocol Funcs
+  func configureView() {
+    view.backgroundColor = .systemBackground
+  }
+  
+  func configureConstraints() {
     
-    // MARK: - Actions
-    @objc func buttonTapped() {
-//        self.coordinator?.navigateToSecondScreen()
-    }
+  }
+  
+  // MARK: - TableView funcs
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return students.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = UITableViewCell(style: .default, reuseIdentifier: "studentsListViewCell")
+    cell.textLabel?.text = students[indexPath.row]
+    return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+  }
 }
 
